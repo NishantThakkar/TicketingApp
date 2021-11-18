@@ -1,0 +1,26 @@
+<ul>
+    <li class="card" *ngFor="let data of Ticket">
+
+
+        <div class="content card-body">
+            <div class="name card-title">
+                <h3>Ticket #{{data.id}}</h3>
+            </div>
+            <hr>
+            <div class="card-text">
+                <p> Summary: {{data.summary}}</p>
+                <p> Status: {{data.status}}</p>
+                <p> Priority: {{data.priority}}</p>
+                <p> Created on: {{data.createdDate}}</p>
+            </div>
+            <div class="product-item-footer">
+                <button routerLink="/{{data.id}}" type="button" class="btn btn-info">Pickup</button>
+            </div>
+        </div>
+
+
+
+    </li>
+</ul>
+<router-outlet>
+</router-outlet>
