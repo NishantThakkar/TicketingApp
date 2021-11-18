@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   refreshList() {
     this.shared.getTicketList().subscribe((data: any) => {
-      this.Ticket = data.data;
+      this.Ticket = data;
     })
   }
 

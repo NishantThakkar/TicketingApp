@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SharedService {
-  readonly TicketURL = "http://hackathonvm.centralus.cloudapp.azure.com/ticketingapis/Ticket";
+  readonly TicketURL = "http://hackathonvm.centralus.cloudapp.azure.com/ticketingapis/ticket";
 
 
   constructor(private http: HttpClient) { }
