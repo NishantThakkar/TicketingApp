@@ -1,0 +1,27 @@
+ul{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin-top:5%;
+}
+
+.card{
+    margin:5px;
+}
+
+.product-item-footer{
+    margin-left: 35%;
+}
+
+
+.card-title, .card-text{
+    text-align:center;
+
+}
+
+.card-title{
+    padding: 5px;
+}
