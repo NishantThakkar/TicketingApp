@@ -1,0 +1,11 @@
+<div class="main">
+    <p class="center sign" >Sign in</p>
+    <form class="form1" #loginData="ngForm" (ngSubmit)="login(loginData.value)">
+        <input class="un" type="text" name="username"  placeholder="Username" ngModel />
+        <input class="pass" type="password" name="password"  placeholder="Password" ngModel>
+        <input class="submit" name="submit" type="submit"  value="Sign In"> 
+        <p class="center" *ngIf="!loginCorrect" style="color: red;">Incorrect username/password</p>
+       
+    </form>
+</div>
+
