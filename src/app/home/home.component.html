@@ -1,8 +1,9 @@
 <ul>
-    <li class="card" *ngFor="let data of Ticket">
+    <li class="card col-md-6" *ngFor="let data of Ticket" style="max-width:20rem;max-height:25rem">
 
-
+        
         <div class="content card-body">
+            
             <div class="name card-title">
                 <h3>Ticket #{{data.id}}</h3>
             </div>
@@ -10,13 +11,16 @@
             <div class="card-text">
                 <p> Summary: {{data.summary}}</p>
                 <p> Status: {{data.status}}</p>
-                <p> Priority: {{data.priority}}</p>
+              <p>  Priority:  <span [ngStyle]="{'color': (data.priority === 'Low') ? 'green' : (data.priority === 'High') ? 'red' : (data.priority === 'Medium') ? 'gold' : ''}">  {{data.priority}}</span></p>
                 <p> Created on: {{data.createdDate}}</p>
             </div>
             <div class="product-item-footer">
-                <button routerLink="/{{data.id}}" type="button" class="btn btn-info">Pickup</button>
+                <button [routerLink]="['/ticket', data.id]" type="button" class="btn btn-info">Pickup</button>
             </div>
         </div>
+        <!-- </div>
+        </div> -->
+
 
 
 

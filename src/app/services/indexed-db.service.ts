@@ -23,6 +23,40 @@ export class IndexedDBService {
     return this.db.put('user-store',userList,'userList');
   }
 
+  storeTickets(ticketList:any){
+    return this.db.put('user-store',ticketList,'ticketList');
+
+
+  }
+
+  async retrieveTicketList(){
+    const transaction=this.db.transaction(['user-store']);
+    const objectStore=transaction.objectStore('user-store');
+    const request=await objectStore.get('ticketList');
+    console.log(request,"reqqqqq")
+    return request;
+
+  }
+
+  storeUpdateList(updateItem:any){
+   return this.db.put('user-store',updateItem,'updateList');
+
+
+  }
+
+  async retrieveTicketById(id:any){
+    this.connectToDb();
+    const transaction=this.db.transaction(['user-store']);
+    const objectStore=transaction.objectStore('user-store');
+    const ticketList=await objectStore.get('ticketList');
+    console.log(ticketList,"iddddddddddd")
+    var ticket=ticketList.filter((cat:any) => cat.id == id)
+    console.log(ticket,"Lollllllllllllllll")
+    return ticket;
+
+
+
+  }
   async getUser(){
     
     const transaction=this.db.transaction(['user-store']);

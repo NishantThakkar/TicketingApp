@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SharedService } from '../Shared/shared.service';
+import { SharedService } from '../shared/shared.service';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { IndexedDBService } from '../Shared/indexed-db.service';
+import { IndexedDBService } from '../services/indexed-db.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-ticket-details',
@@ -15,35 +16,47 @@ export class TicketDetailsComponent implements OnInit {
   private IndexedDBService!: IndexedDBService;
   ticket_details!: any;
   formbuilder: any;
-  constructor(private activatedRoute: ActivatedRoute, private shared: SharedService,
-    private router: Router) {
-    activatedRoute.params.subscribe((params) => {
-      if (params.id)
-        this.ticket_details = shared.getTicketDetails(params.id);
-    })
-  }
+  constructor(private route: ActivatedRoute, private shared: SharedService,
+    private router: Router,private indexedDBService:IndexedDBService) {
 
+    
+  }
+  private routeSub: Subscription = new Subscription;
+  
   ngOnInit(): void {
-    this.formValue = this.formbuilder.group({
-      Id: 0,
-      email: [''],
-      password: ['']
-    })
+    this.routeSub = this.route.params.subscribe(async(params) => {
+      if(params.id)
+        var tickets= await this.shared.getTicketDetails(params['id']);
+        this.ticket_details=tickets[0];
+        console.log(this.ticket_details.id,"mainnnnnnn")
+    });
+    // this.activatedRoute.params.subscribe(async(params) => {
+    //   if(params.id)
+    //     var tickets= await this.shared.getTicketDetails(params.id);
+    //     this.ticket_details=tickets[0];
+    //     console.log(this.ticket_details.id,"mainnnnnnn")
+    // })
+    // this.formValue = this.formbuilder.group({
+    //   Id: 0,
+    //   email: [''],
+    //   password: ['']
+    // })
   }
-  postSync() {
-    let obj = {
-      name: 'Nileena'
-    }
-    this.shared.editTicket(obj).subscribe(res => { console.log(res); },
-      err => {
-        this.IndexedDBService.addUser(obj.name).then().catch(console.log);
-        console.log(err);
-      })
-  }
+  update(formData:any){
+    formData.id=this.ticket_details.id;
+    formData.summary=this.ticket_details.summary;
+    formData.details=this.ticket_details.details;
+    console.log(formData,"form dataaa");
+    this.indexedDBService.storeUpdateList(formData).then((data:any)=>{
+      alert("Updated successfully");
+    this.router.navigate(['/home']);
 
-  /*backgroundSync() {
-    navigator.serviceWorker.ready.then((swRegistration) => 
-    swRegistration.sync.register('post-data')).catch(console.log);
-  }*/
+    });
+    
+    
+
+  }
+ 
+
 
 }
