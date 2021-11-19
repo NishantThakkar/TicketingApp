@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   getTicketDetails(){
 
-    this.http.get('http://hackathonvm.centralus.cloudapp.azure.com/ticketingapis/Ticket').subscribe(
+    this.http.get('https://hackathonvm.centralus.cloudapp.azure.com/ticketingapis/Ticket').subscribe(
       (res)=>{
 
           console.log(res,"tickettttt");
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       
     };
     console.log(val,"yyy");
-    this.http.post('http://hackathonvm.centralus.cloudapp.azure.com/ticketingapis/Login',val).subscribe(
+    this.http.post('https://hackathonvm.centralus.cloudapp.azure.com/ticketingapis/Login',val).subscribe(
            (res)=>{
              console.log(res,"accesss tokennn")
              sessionStorage.setItem("Access token",JSON.stringify(res))

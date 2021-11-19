@@ -7,7 +7,7 @@ import { IndexedDBService } from '../services/indexed-db.service';
   providedIn: 'root'
 })
 export class SharedService {
-  readonly TicketURL = "http://hackathonvm.centralus.cloudapp.azure.com/ticketingapis/Ticket";
+  readonly TicketURL = "https://hackathonvm.centralus.cloudapp.azure.com/ticketingapis/Ticket";
 
   constructor(private http: HttpClient, private indexedDBService: IndexedDBService) { }
 
@@ -28,7 +28,7 @@ export class SharedService {
   }
 
   sendSyncData() {
-    var url = 'http://hackathonvm.centralus.cloudapp.azure.com/ticketingapis/Ticket/Sync';
+    var url = 'https://hackathonvm.centralus.cloudapp.azure.com/ticketingapis/Ticket/Sync';
 
 
     this.indexedDBService.retriveSyncUpdate().then(data => {
@@ -54,7 +54,7 @@ export class SharedService {
     //   "createdDate": "2021-11-18T07:30:07.823",
     //   "updatedDate": "2021-11-18T11:07:57.03"
     // }
-    var url = 'http://hackathonvm.centralus.cloudapp.azure.com/ticketingapis/Ticket/Update';
+    var url = 'https://hackathonvm.centralus.cloudapp.azure.com/ticketingapis/Ticket/Update';
     console.log("editinggg", val);
     return this.http.put(url, val);
   }
