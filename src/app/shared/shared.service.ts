@@ -27,6 +27,15 @@ export class SharedService {
 
   }
 
+<<<<<<< HEAD
+  sendSyncData(){
+    var url='http://hackathonvm.centralus.cloudapp.azure.com/ticketingapis/Ticket/Sync';
+    
+   
+    this.indexedDBService.retriveSyncUpdate().then(data=>{
+      console.log('put url',data);
+      return this.http.put(url,data);
+=======
   sendSyncData() {
     var url = 'http://hackathonvm.centralus.cloudapp.azure.com/ticketingapis/Ticket/Sync';
 
@@ -39,6 +48,7 @@ export class SharedService {
       }, err => {
         console.log(err);
       });
+>>>>>>> 8e44a831f3223adf090440138f0499409efc2394
     });
   }
 
