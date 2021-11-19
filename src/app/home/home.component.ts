@@ -16,19 +16,19 @@ export class HomeComponent implements OnInit {
   Ticket: any = [];
   category: any;
 
-  constructor(private activatedRoute: ActivatedRoute, private shared: SharedService, private router: Router,private indexedDBService:IndexedDBService) {
+  constructor(private activatedRoute: ActivatedRoute, private shared: SharedService, private router: Router, private indexedDBService: IndexedDBService) {
     activatedRoute.params.subscribe((params) => {
 
       this.category = params.id;
     })
   }
- networkStatus:any;
- onlineEvent!: Observable<Event>;
- offlineEvent!: Observable<Event>;
- subscriptions: Subscription[] = [];
+  networkStatus: any;
+  onlineEvent!: Observable<Event>;
+  offlineEvent!: Observable<Event>;
+  subscriptions: Subscription[] = [];
 
- connectionStatusMessage!: string;
- connectionStatus!: string;
+  connectionStatusMessage!: string;
+  connectionStatus!: string;
   ngOnInit(): void {
     this.refreshList();
     this.onlineEvent = fromEvent(window, 'online');
@@ -39,7 +39,8 @@ export class HomeComponent implements OnInit {
       this.connectionStatus = 'online';
       console.log('Online............');
       this.shared.sendSyncData();
-      this.indexedDBService.storeSyncUpdate(null);
+
+      //this.indexedDBService.storeSyncUpdate(null);
 
     }));
 
@@ -48,7 +49,7 @@ export class HomeComponent implements OnInit {
       this.connectionStatus = 'offline';
       console.log('Offline.............');
     }));
-  
+
   }
 
 
@@ -56,14 +57,14 @@ export class HomeComponent implements OnInit {
   refreshList() {
     this.shared.getTicketList().subscribe(
       (data: any) => {
-      this.Ticket = data;
-      
-    },async (err:any)=>{
-      
-      this.Ticket=await this.indexedDBService.retrieveTicketList();
-      console.log("heyyyyyyyyy",this.Ticket)
+        this.Ticket = data;
 
-    })
+      }, async (err: any) => {
+
+        this.Ticket = await this.indexedDBService.retrieveTicketList();
+        console.log("heyyyyyyyyy", this.Ticket)
+
+      })
   }
 
 }

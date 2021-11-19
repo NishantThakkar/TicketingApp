@@ -13,6 +13,7 @@ import { TicketDetailsComponent } from './ticket-details/ticket-details.componen
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
