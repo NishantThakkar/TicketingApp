@@ -8,7 +8,10 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a routerLink="/" class="nav-link px-2 text-white">Home</a></li>
             </ul>
-
+            <div>
+                <button class='btn btn-danger' *ngIf="!online">Offline</button>
+                <button class='btn btn-success' *ngIf="online">online</button>
+            </div>
             <div class="text-end">
                 Welcome {{name}}
             </div>

@@ -21,8 +21,30 @@ export class SharedService {
    
   }
 
+  sendSyncData(){
+    var url='http://hackathonvm.centralus.cloudapp.azure.com/ticketingapis/Ticket/Sync';
+    
+   
+    this.indexedDBService.retriveSyncUpdate().then(data=>{
+      return this.http.put(url,data);
+    });
+  }
+
   editTicket(val: any) {
-    return this.http.put<any>(this.TicketURL + "/updateCategory", val);
+    // val={
+    //   "id": 1,
+    //   "summary": "Uncertain about printer 9CAAQ01 security",
+    //   "details": "cartridge broken",
+    //   "priority": "Medium",
+    //   "status": "Resolved",
+    //   "notes": "hey",
+    //   "assignedTo": "Farhan",
+    //   "createdDate": "2021-11-18T07:30:07.823",
+    //   "updatedDate": "2021-11-18T11:07:57.03"
+    // }
+    var url='http://hackathonvm.centralus.cloudapp.azure.com/ticketingapis/Ticket/Update';
+    console.log("editinggg",val);
+    return this.http.put(url,val);
   }
 
   deleteTicket(id: number) {
