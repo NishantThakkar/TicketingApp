@@ -1,17 +1,22 @@
 <ul>
     <li class="card col-md-6" *ngFor="let data of Ticket" style="max-width:20rem;max-height:25rem">
 
-        
+
         <div class="content card-body">
-            
+
             <div class="name card-title">
                 <h3>Ticket #{{data.id}}</h3>
             </div>
             <hr>
             <div class="card-text">
                 <p> Summary: {{data.summary}}</p>
-                <p> Status: {{data.status}}</p>
-              <p>  Priority:  <span [ngStyle]="{'color': (data.priority === 'Low') ? 'green' : (data.priority === 'High') ? 'red' : (data.priority === 'Medium') ? 'gold' : ''}">  {{data.priority}}</span></p>
+                <p> Status: <span
+                        [ngStyle]="{'color': (data.status === 'In Progress') ? 'blue' : (data.status === 'Resolved') ? 'green' : (data.status === 'Assigned') ? 'gold' : ''}">
+                        {{data.status}}</span>
+                </p>
+                <p> Priority: <span
+                        [ngStyle]="{'color': (data.priority === 'Low') ? 'green' : (data.priority === 'High') ? 'red' : (data.priority === 'Medium') ? 'gold' : ''}">
+                        {{data.priority}}</span></p>
                 <p> Created on: {{data.createdDate}}</p>
             </div>
             <div class="product-item-footer">
