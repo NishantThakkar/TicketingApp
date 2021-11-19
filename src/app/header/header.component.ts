@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import {LoginService} from '../components/login/login.service';
 
 @Component({
   selector: 'app-header',
@@ -8,12 +10,21 @@ import { fromEvent, Observable, Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  
+  userName = '';
   networkStatus:any;
   onlineEvent!: Observable<Event>;
   offlineEvent!: Observable<Event>;
   subscriptions: Subscription[] = [];
   online:boolean=true;
+  constructor(private loginService: LoginService, private route: Router) { 
+    this.loginService.getUserName().subscribe(x => {
+        this.userName = x;
+    });
+}
+logout(){
+  this.route.navigate(["login"]);
+}
   ngOnInit(): void {
     this.onlineEvent = fromEvent(window, 'online');
     this.offlineEvent = fromEvent(window, 'offline');
