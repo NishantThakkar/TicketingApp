@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoginHeaderComponent } from './login-header/login-header.component';
+import { LoginService } from './components/login/login.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { FooterComponent } from './components/footer/footer.component';
     HomeComponent,
     TicketDetailsComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoginHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ import { FooterComponent } from './components/footer/footer.component';
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

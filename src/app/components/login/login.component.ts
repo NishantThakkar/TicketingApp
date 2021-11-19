@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { IndexedDBService } from 'src/app/services/indexed-db.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import {LoginService} from './login.service';
 
 
 @Component({
@@ -14,11 +14,11 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
 
-  constructor(private http:HttpClient,private router: Router,private indexedDBService:IndexedDBService) { }
+  constructor(private http:HttpClient,private router: Router,private indexedDBService:IndexedDBService, private loginService: LoginService) { }
 
   ngOnInit(): void {
    
-
+    
 
   }
 
@@ -52,6 +52,8 @@ export class LoginComponent implements OnInit {
              console.log(res,"accesss tokennn")
              sessionStorage.setItem("Access token",JSON.stringify(res))
              this.getTicketDetails();
+             this.loginService.updateLan(false);
+             this.loginService.updateUserName(loginData.username);
              this.router.navigate(['/home']);
 
            },
