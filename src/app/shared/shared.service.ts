@@ -26,6 +26,7 @@ export class SharedService {
     
    
     this.indexedDBService.retriveSyncUpdate().then(data=>{
+      console.log('put url',data);
       return this.http.put(url,data);
     });
   }
