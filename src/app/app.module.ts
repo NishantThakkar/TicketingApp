@@ -15,6 +15,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginHeaderComponent } from './login-header/login-header.component';
 import { LoginService } from './components/login/login.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,7 @@ import { LoginService } from './components/login/login.service';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ServiceWorkerModule.register('service-worker.js', {
+    ServiceWorkerModule.register('./service-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).

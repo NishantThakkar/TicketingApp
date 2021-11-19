@@ -1,38 +1,35 @@
-
 <div class="card" style="width: 25rem;">
     <ul class="list-group list-group-flush">
         <form #formData="ngForm" (ngSubmit)="update(formData.value)">
             <li class="list-group-item">
-                <label for="exampleInputId" class="form-label">Ticket Id: </label>
-                <label  id="exampleInputId">{{ticket_details.id}}</label>
+                <label for="exampleInputId" class="form-label">Ticket Id: #</label>
+                <label id="exampleInputId">{{ticket_details.id}}</label>
             </li>
             <li class="list-group-item">
-                <label for="exampleInputSummary" class="form-label">Summary:</label>
-                <label  id="exampleInputSummary">{{ticket_details.summary}}</label>
+                <label for="exampleInputSummary" class="form-label">Summary: </label>
+                <label id="exampleInputSummary"> {{ticket_details.summary}}</label>
             </li>
             <li class="list-group-item">
-                <label for="exampleInputSummary" class="form-label">Details:</label>
-                <label  id="exampleInputSummary">{{ticket_details.details}}</label>
-            </li>
-            <li class="list-group-item">
-                <label for="exampleInputNotes" class="form-label">Notes</label>
-                <input type="text" name="notes"  class=" form-control" id="exampleInputNotes" ngModel>
+                <label for="exampleInputSummary" class="form-label">Details: </label>
+                <label id="exampleInputSummary"> {{ticket_details.details}}</label>
             </li>
             <li class="list-group-item ">
                 <span class="form-label radio">Status</span>
-                <br>
-                <div  class="radio-button">
-                    <input type="radio" value='InProgress'  name="status" ngModel>InProgress
-                    <input type="radio" style="margin-left:15px;" value='Resolved' 
-                        name="status" ngModel>Resolved
-                </div>
+                <span class="radio-button">
+                    <input type="radio" value='In Progress' name="status" ngModel>In Progress
+                    <input type="radio" style="margin-left:15px;" value='Resolved' name="status" ngModel>Resolved
+                </span>
             </li>
-       
-        <li class="list-group-item">
-            <button type="submit" class="btn btn-info" >Update</button>
-            <button routerLink="/home" class="btn btn-info">Back</button>
-        </li>
-    </form>
+            <li class="list-group-item">
+                <label for="exampleInputNotes" class="form-label">Notes</label>
+                <textarea type="text" name="notes" class=" form-control" id="exampleInputNotes" ngModel></textarea>
+            </li>
+
+            <li class="list-group-item">
+                <button type="submit" class="btn btn-info">Update</button>
+                <button routerLink="/home" class="btn btn-info">Back</button>
+            </li>
+        </form>
 
     </ul>
 </div>

@@ -44,6 +44,21 @@ export class IndexedDBService {
 
   }
 
+ 
+  storeSyncUpdate(val:any)
+  {
+    return this.db.put('user-store',val,'syncUpdate');
+  }
+  async retriveSyncUpdate()
+  {
+    const transaction=this.db.transaction(['user-store']);
+    const objectStore=transaction.objectStore('user-store');
+    const request=await objectStore.get('syncUpdate');
+    console.log(request,"reqqqqq")
+    return request;
+
+  }
+
   async retrieveTicketById(id:any){
     this.connectToDb();
     const transaction=this.db.transaction(['user-store']);
