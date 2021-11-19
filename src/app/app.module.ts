@@ -28,7 +28,7 @@ import { FooterComponent } from './components/footer/footer.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ServiceWorkerModule.register('service-worker.js', {
+    ServiceWorkerModule.register('./service-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).

@@ -7,8 +7,8 @@ import { TicketDetailsComponent } from './ticket-details/ticket-details.componen
 const routes: Routes = [
   {path:'',component:LoginComponent},
   {path:'login',component:LoginComponent},
-  { path: 'home', component: HomeComponent },
-  { path: "ticket/:id", component: TicketDetailsComponent }
+  {path:'home', component: HomeComponent},
+  {path:'ticket/:id', component: TicketDetailsComponent}
 ];
 
 @NgModule({
